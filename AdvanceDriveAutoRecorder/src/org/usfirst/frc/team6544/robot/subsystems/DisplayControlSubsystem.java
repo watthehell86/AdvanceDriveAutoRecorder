@@ -16,5 +16,8 @@ public class DisplayControlSubsystem extends Subsystem {
         // Set the default command for a subsystem here.
         setDefaultCommand(new DisplayController());
     }
+    public void init() {
+    	
+    }
 }
 
