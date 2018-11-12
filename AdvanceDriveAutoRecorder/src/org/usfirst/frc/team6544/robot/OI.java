@@ -30,6 +30,10 @@ public class OI {
 	public static boolean whenDone() {
 		return XboxController.getRawButtonPressed(2);
 	}
+	
+	public static Joystick xbox() {
+		return XboxController;
+	}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
