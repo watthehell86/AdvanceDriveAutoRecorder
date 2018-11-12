@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
@@ -19,8 +18,8 @@ public class RecorderSystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	private boolean written = false;
-	List<Byte> leftDriveSpeeds = new ArrayList<Byte>();
-	List<Byte> rightDriveSpeeds = new ArrayList<Byte>();
+	List<Double> leftDriveSpeeds = new ArrayList<Double>();
+	List<Double> rightDriveSpeeds = new ArrayList<Double>();
 	SendableChooser<String> m_chooser = new SendableChooser<>();
 	private String[] fileNames = {"Left-Auto-Run.txt",
 			"Right-Auto-Run.txt",
@@ -34,8 +33,8 @@ public class RecorderSystem extends Subsystem {
       setDefaultCommand(null);
     }
    
-	public byte[] printLeftSpeed() {
-    	byte[] output = new byte[leftDriveSpeeds.size()];
+	public double[] printLeftSpeed() {
+    	double[] output = new double[leftDriveSpeeds.size()];
     	for(int i = 0;i<leftDriveSpeeds.size();i++) {
     		output[i] = leftDriveSpeeds.get(i);
     	}
@@ -47,13 +46,11 @@ public class RecorderSystem extends Subsystem {
 	
     public void JoystickInput(Joystick joy) {
     	listSpeeds(joy.getRawAxis(1),joy.getRawAxis(4));
-    	Timer.delay(0.5);
+    	
     }
     public void listSpeeds(double leftSpeed,double rightSpeed) {
-		byte lSpeed = (byte) leftSpeed;
-		byte rSpeed = (byte) rightSpeed;
-		leftDriveSpeeds.add(lSpeed);
-		rightDriveSpeeds.add(rSpeed);
+		leftDriveSpeeds.add(leftSpeed);
+		rightDriveSpeeds.add(rightSpeed);
 	}
 	public void displayFilenameOptions() {
 		m_chooser.addDefault("Option 1", fileNames[0]);
@@ -68,8 +65,8 @@ public class RecorderSystem extends Subsystem {
             ObjectOutputStream objectOutStream = new ObjectOutputStream(fileOutStream);
            for(int i = 0;i<leftDriveSpeeds.size();i++) {
         	   objectOutStream.writeObject(d);
-               objectOutStream.close();
            }
+           objectOutStream.close();
            setWritten(false);
         }
         catch (IOException e) {

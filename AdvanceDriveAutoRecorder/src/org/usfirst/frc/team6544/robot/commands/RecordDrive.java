@@ -3,6 +3,7 @@ package org.usfirst.frc.team6544.robot.commands;
 import org.usfirst.frc.team6544.robot.OI;
 import org.usfirst.frc.team6544.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -26,6 +27,7 @@ public class RecordDrive extends Command {
     @Override
 	protected void execute() {
     	Robot.m_recorder.JoystickInput(OI.XboxController);
+    	Timer.delay(0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,7 +39,7 @@ public class RecordDrive extends Command {
     // Called once after isFinished returns true
     @Override
 	protected void end() {
-    	SmartDashboard.putRaw("Left Value Output", Robot.m_recorder.printLeftSpeed());
+    	SmartDashboard.putNumberArray("Left Value Output", Robot.m_recorder.printLeftSpeed());
     }
 
     // Called when another command which requires one or more of the same
