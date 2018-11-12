@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6544.robot.commands.AutoRunOne;
+import org.usfirst.frc.team6544.robot.subsystems.DisplayControlSubsystem;
 import org.usfirst.frc.team6544.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team6544.robot.subsystems.RecorderSystem;
 
@@ -27,6 +28,7 @@ import org.usfirst.frc.team6544.robot.subsystems.RecorderSystem;
 public class Robot extends TimedRobot {
 	public static DriveSystem m_drive = new DriveSystem();
 	public static RecorderSystem m_recorder= new RecorderSystem();
+	public static DisplayControlSubsystem m_displayControl = new DisplayControlSubsystem();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
