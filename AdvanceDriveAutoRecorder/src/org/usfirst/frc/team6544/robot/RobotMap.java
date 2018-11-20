@@ -15,10 +15,10 @@ package org.usfirst.frc.team6544.robot;
  */
 public class RobotMap {
 
-	 public static final int kFronLeftCIM = 0;
-	    public static final int kBackRightCIM = 6;
-	    public static final int kFrontRightCIM = 7;
-	    public static final int kbackLeftCIM = 4;
+	public static final int kFronLeftCIM = 0;
+	public static final int kBackRightCIM = 6;
+	public static final int kFrontRightCIM = 7;
+	public static final int kbackLeftCIM = 4;
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;

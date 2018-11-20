@@ -12,39 +12,39 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class RecordDrive extends Command {
 
-    public RecordDrive() {
-        // Use requires() here to declare subsystem dependencies
-         requires(Robot.m_recorder);
-    }
+	public RecordDrive() {
+		// Use requires() here to declare subsystem dependencies
+		requires(Robot.m_recorder);
+	}
 
-    // Called just before this Command runs the first time
-    @Override
+	// Called just before this Command runs the first time
+	@Override
 	protected void initialize() {
-    	Robot.m_recorder.setWritten(true);
-    }
+		Robot.m_recorder.setWritten(true);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    @Override
+	// Called repeatedly when this Command is scheduled to run
+	@Override
 	protected void execute() {
-    	Robot.m_recorder.JoystickInput(OI.XboxController);
-    	Timer.delay(0.5);
-    }
+		Robot.m_recorder.JoystickInput(OI.XboxController);
+		Timer.delay(0.5);
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    @Override
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
 	protected boolean isFinished() {
-        return OI.whenDone();
-    }
+		return OI.whenDone();
+	}
 
-    // Called once after isFinished returns true
-    @Override
+	// Called once after isFinished returns true
+	@Override
 	protected void end() {
-    	SmartDashboard.putNumberArray("Left Value Output", Robot.m_recorder.printLeftSpeed());
-    }
+		SmartDashboard.putNumberArray("Left Value Output", Robot.m_recorder.printLeftSpeed());
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    @Override
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
 	protected void interrupted() {
-    }
+	}
 }

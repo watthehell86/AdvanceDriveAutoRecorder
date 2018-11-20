@@ -14,17 +14,13 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-
-//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
- * An example subsystem.  You can replace me with your own Subsystem.
+ * DriveSystem
  */
 public class DriveSystem extends Subsystem {
-	//private static final WPI_TalonSRX _frontLeftMotor = new WPI_TalonSRX(RobotMap.kFronLeftCIM);
 	private static final WPI_TalonSRX _backRightMotor = new WPI_TalonSRX(RobotMap.kBackRightCIM);
 	private static final WPI_TalonSRX _frontRightMotor = new WPI_TalonSRX(RobotMap.kFrontRightCIM);
 	private static final WPI_TalonSRX _frontLeftMotor = new WPI_TalonSRX(RobotMap.kFronLeftCIM);
@@ -32,7 +28,8 @@ public class DriveSystem extends Subsystem {
 	private static final SpeedControllerGroup right = new SpeedControllerGroup(_frontLeftMotor, _backLeftMotor);
 	private static final SpeedControllerGroup left = new SpeedControllerGroup(_frontRightMotor, _backRightMotor);
 	private static final DifferentialDrive ArcadeDrive = new DifferentialDrive(left, right);
-	
+	public double speed = 1;
+
 //	List<Byte> leftDriveSpeeds = new ArrayList<Byte>();
 //	leftDriveSpeeds.add((byte) 1);
 //	leftDriveSpeeds.add((byte) 2);
@@ -42,10 +39,10 @@ public class DriveSystem extends Subsystem {
 	@Override
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		 setDefaultCommand(new XboxDrive());
+		setDefaultCommand(new XboxDrive());
 	}
-	public void arcadeDrive(Joystick joy) {
-    	ArcadeDrive.arcadeDrive((joy.getRawAxis(1)),(joy.getRawAxis(4)),true);
-    }
-}
 
+	public void arcadeDrive(Joystick joy) {
+		ArcadeDrive.arcadeDrive((joy.getRawAxis(1))/speed, (joy.getRawAxis(4))/speed, true);
+	}
+}

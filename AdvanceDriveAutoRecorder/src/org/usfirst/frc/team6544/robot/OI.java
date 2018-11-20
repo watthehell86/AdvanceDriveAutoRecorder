@@ -18,19 +18,22 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	
+
 	public static Joystick XboxController = new Joystick(0);
+
+	static Button record = new JoystickButton(XboxController, 1);
+	static Button fullSpeed = new JoystickButton(XboxController, 1);
+	static Button halfSpeed = new JoystickButton(XboxController, 1);
+	static Button quaterSpeed = new JoystickButton(XboxController, 1);
 	
-	  static Button record = new JoystickButton(XboxController, 1);
-	 
 	public OI() {
 		record.whenPressed(new RecordDrive());
-		//record.cancelWhenPressed(new RecordDrive());
 	}
+
 	public static boolean whenDone() {
 		return XboxController.getRawButtonPressed(2);
 	}
-	
+
 	public static Joystick xbox() {
 		return XboxController;
 	}
@@ -39,8 +42,6 @@ public class OI {
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
-	
-	
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
@@ -62,3 +63,26 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new XboxDrive());
 }
+/*
+ * XBOX BUTTON MAPPING FOR DRIVER STATION AS FOLLOWS
+ * Button 1 = A
+ * Button 2 = B
+ * Button 3 = X OR small left wheel button up
+ * Button 4 = Y
+ * Button 5 = Left Bumper
+ * Button 6 = Right Bumper OR small right wheel down
+ * Button 7 = Select / Menu Button
+ * Button 8 = Start / Enter Button
+ * Button 9 = Click in Left Analog Stick OR small left wheel down
+ * Button 10 = Click in Right Analog Stick
+ * 
+ * Axis 0 = Left stick left + right
+ * Axis 1 = Left stick up + down
+ * Axis 2 = Left trigger
+ * Axis 3 = Right trigger
+ * Axis 4 = Right stick left + right
+ * Axis 5 = Right stick up + down
+ * 
+ * POV = D-Pad
+ * POV LEFT = small right wheel up
+ */

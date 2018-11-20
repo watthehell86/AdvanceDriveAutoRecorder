@@ -7,12 +7,12 @@
 
 package org.usfirst.frc.team6544.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team6544.robot.Robot;
 
+import edu.wpi.first.wpilibj.command.Command;
+
 /**
- * An example command.  You can replace me with your own command.
+ * An example command. You can replace me with your own command.
  */
 public class XboxDrive extends Command {
 	public XboxDrive() {
@@ -28,7 +28,7 @@ public class XboxDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		//Robot.m_drive.arcadeDrive(OI.XboxController);
+		// Robot.m_drive.arcadeDrive(OI.XboxController);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
