@@ -19,8 +19,8 @@ public class RecorderSystemTimed extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	private boolean written = false; // Has the arrays been written to a file
-	List<Double> leftDriveSpeeds = new ArrayList<Double>(); // Store speed values in an array list for the left side motors
-	List<Double> rightDriveSpeeds = new ArrayList<Double>(); // Store speed values in an array list for the right side motors
+	public List<Double> leftDriveSpeeds = new ArrayList<Double>(); // Store speed values in an array list for the left side motors
+	public List<Double> rightDriveSpeeds = new ArrayList<Double>(); // Store speed values in an array list for the right side motors
 	SendableChooser<String> m_chooser = new SendableChooser<>(); //An object that will create a drop down when you send it to the dashboard
 	private String[] fileNames = { "Left-Auto-Run.txt", 
 			"Right-Auto-Run.txt", 
@@ -38,6 +38,13 @@ public class RecorderSystemTimed extends Subsystem {
 		double[] output = new double[leftDriveSpeeds.size()];
 		for (int i = 0; i < leftDriveSpeeds.size(); i++) {
 			output[i] = leftDriveSpeeds.get(i);
+		}
+		return output;
+	}
+	public double[] printRightSpeed() {
+		double[] output = new double[rightDriveSpeeds.size()];
+		for (int i = 0; i < rightDriveSpeeds.size(); i++) {
+			output[i] = rightDriveSpeeds.get(i);
 		}
 		return output;
 	}
@@ -109,5 +116,11 @@ public class RecorderSystemTimed extends Subsystem {
 
 	public String getSelectedAuto() {
 		return m_chooser.getSelected();
+	}
+	public int rightArrayLength() {
+		return leftDriveSpeeds.size();
+	}
+	public int leftArrayLength() {
+		return leftDriveSpeeds.size();
 	}
 }

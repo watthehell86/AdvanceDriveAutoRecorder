@@ -39,7 +39,13 @@ public class RecordDriveTimed extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		SmartDashboard.putNumberArray("Left Value Output", Robot.m_recorderTimed.printLeftSpeed());
+		for(int i = 0; i < Robot.m_recorderDistance.leftArrayLength();i++) {
+			SmartDashboard.putNumberArray("Left Value Output", Robot.m_recorderTimed.printLeftSpeed());
+		}
+		for(int i = 0; i < Robot.m_recorderDistance.rightArrayLength();i++) {
+			SmartDashboard.putNumberArray("Right Value Output", Robot.m_recorderTimed.printRightSpeed());
+		}
+		
 	}
 
 	// Called when another command which requires one or more of the same
