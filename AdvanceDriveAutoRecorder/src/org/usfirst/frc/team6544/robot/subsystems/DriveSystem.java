@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * DriveSystem
@@ -44,5 +45,8 @@ public class DriveSystem extends Subsystem {
 
 	public void arcadeDrive(Joystick joy) {
 		ArcadeDrive.arcadeDrive((joy.getRawAxis(1))/speed, (joy.getRawAxis(4))/speed, true);
+	}
+	public void log() {
+		SmartDashboard.putNumber("Current Speed", speed);
 	}
 }

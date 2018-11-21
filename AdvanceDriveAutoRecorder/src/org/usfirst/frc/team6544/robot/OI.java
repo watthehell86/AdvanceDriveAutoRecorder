@@ -7,7 +7,7 @@
 
 package org.usfirst.frc.team6544.robot;
 
-import org.usfirst.frc.team6544.robot.commands.RecordDrive;
+import org.usfirst.frc.team6544.robot.commands.RecordDriveTimed;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -27,7 +27,7 @@ public class OI {
 	static Button quaterSpeed = new JoystickButton(XboxController, 1);
 	
 	public OI() {
-		record.whenPressed(new RecordDrive());
+		record.whenPressed(new RecordDriveTimed());
 	}
 
 	public static boolean whenDone() {

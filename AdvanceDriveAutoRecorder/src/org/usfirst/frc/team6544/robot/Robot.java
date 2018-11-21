@@ -10,7 +10,7 @@ package org.usfirst.frc.team6544.robot;
 import org.usfirst.frc.team6544.robot.commands.AutoRunOne;
 import org.usfirst.frc.team6544.robot.subsystems.DisplayControlSubsystem;
 import org.usfirst.frc.team6544.robot.subsystems.DriveSystem;
-import org.usfirst.frc.team6544.robot.subsystems.RecorderSystem;
+import org.usfirst.frc.team6544.robot.subsystems.RecorderSystemTimed;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -27,7 +27,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 	public static DriveSystem m_drive = new DriveSystem();
-	public static RecorderSystem m_recorder = new RecorderSystem();
+	public static RecorderSystemTimed m_recorderTimed = new RecorderSystemTimed();
+	public static RecorderSystemTimed m_recorderDistance = new RecorderSystemTimed();
 	public static DisplayControlSubsystem m_displayControl = new DisplayControlSubsystem();
 	public static OI m_oi;
 
@@ -107,6 +108,7 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		log();
 	}
 
 	/**
@@ -115,6 +117,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		log();
 	}
 
 	/**
@@ -122,5 +125,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+	
+	public void log() {
+		Robot.m_drive.log();
 	}
 }

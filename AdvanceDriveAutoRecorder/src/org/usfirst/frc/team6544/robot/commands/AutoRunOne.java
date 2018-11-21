@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoRunOne extends CommandGroup {
 
 	public AutoRunOne() {
-		addSequential(new RecordDrive());
+		addSequential(new RecordDriveTimed());
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());

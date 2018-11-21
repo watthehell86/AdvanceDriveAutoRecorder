@@ -13,7 +13,7 @@ public class WriteFile extends Command {
 
 	public WriteFile() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.m_recorder);
+		requires(Robot.m_recorderTimed);
 	}
 
 	// Called just before this Command runs the first time
@@ -25,7 +25,7 @@ public class WriteFile extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.m_recorder.writeFile(Robot.m_recorder.getSelectedAuto(), m);
+		Robot.m_recorderTimed.writeFile(Robot.m_recorderTimed.getSelectedAuto(), m);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
